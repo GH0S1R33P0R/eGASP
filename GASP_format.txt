@@ -1,0 +1,31 @@
+GASP, which stands for Gpu Aspect Style Programming, 
+is a format which will be used to write the policies for CUDA
+
+NEED:
+Function "signature" where we have
+Qualifier, return type, and name. e.g. __global__ void inc
+
+All the code is inserted verbatim.
+The "Pre-execution" into the function at the beginning
+The "Pre-return" prior to all instances of return.
+The "Post-execution" at the end of the function.
+
+Format of the policy is in the form,
+       @begin signature in a dedicated line.
+       @preExec 
+        Pre-execution code
+       @preReturn
+        Pre-return code
+       @postExec
+        Post-execution code
+       @end
+
+NOTES:
+    Can have multiple policies in a file. Can't have more than one per funciton.
+    Make sure that the directives are each on a seperate new line.
+    Ensure a space after each directive
+
+    Don't have any of the directives in the policy code anywhere at all!
+    Also, every policy hast to have ALL of the directives. 
+        If you don't want the policy to affect a section, just keep it empty
+
